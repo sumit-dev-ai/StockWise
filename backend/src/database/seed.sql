@@ -1,0 +1,27 @@
+USE stockwise;
+
+INSERT IGNORE INTO master_categories (name, description, icon) VALUES
+('Grocery', 'Daily grocery and general store items', 'shopping-basket'),
+('Dairy', 'Milk, cheese, butter, curd, paneer', 'milk'),
+('Bakery', 'Bread, cakes, biscuits, and bakery products', 'croissant'),
+('Snacks', 'Chips, namkeen, biscuits, and packaged snacks', 'cookie'),
+('Beverages', 'Cold drinks, juices, tea, coffee, and water', 'cup-soda'),
+('Frozen Foods', 'Frozen ready-to-eat and frozen storage items', 'snowflake'),
+('Fruits & Vegetables', 'Fresh fruits and vegetables', 'apple'),
+('Personal Care', 'Skin care, hair care, and hygiene products', 'sparkles'),
+('Household Items', 'General household utility items', 'home'),
+('Cleaning Supplies', 'Detergents, cleaners, and sanitation products', 'spray-can'),
+('Electronics', 'Electronic devices and accessories', 'monitor'),
+('Mobile Accessories', 'Chargers, cables, earphones, and mobile accessories', 'smartphone'),
+('Stationery', 'Notebooks, pens, paper, and office supplies', 'notebook-pen'),
+('Clothing', 'Men, women, and kids clothing', 'shirt'),
+('Footwear', 'Shoes, sandals, and footwear products', 'footprints'),
+('Medicine', 'Medicines and pharmacy products', 'pill'),
+('Baby Products', 'Baby care, diapers, and baby food', 'baby'),
+('Pet Supplies', 'Pet food, toys, and pet care products', 'paw-print'),
+('Kitchenware', 'Kitchen tools, utensils, and storage products', 'utensils'),
+('Hardware', 'Tools, fittings, and hardware items', 'wrench'),
+('Sports & Fitness', 'Sports goods and fitness equipment', 'dumbbell'),
+('Toys & Games', 'Toys, board games, and kids games', 'gamepad-2'),
+('Books', 'Books, magazines, and reading materials', 'book-open'),
+('Beauty & Cosmetics', 'Beauty, makeup, and cosmetic products', 'brush');
