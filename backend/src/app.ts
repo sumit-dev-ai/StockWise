@@ -3,7 +3,7 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import {db} from "./config/db";
 import errorMiddleware from "./middlewares/error.middleware";
-
+import  authRoutes  from "./modules/auth/auth.routes";
 
 const app = express();
 
@@ -26,6 +26,10 @@ app.get("/api/v1/health/db-check", async(req, res) => {
   const [rows] = await db.query("SELECT 1+1 AS result")
   res.status(200).json({success: true, message: "StockWise backend is healthy!" , data:rows });
 });
+
+
+
+app.use("/api/v1/auth", authRoutes)
 
 app.use(errorMiddleware);
 export default app;

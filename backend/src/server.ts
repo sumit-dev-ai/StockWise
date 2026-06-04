@@ -4,7 +4,7 @@ import { testDbConnection } from "./config/db";
 
 const startServer = async () => {
   try {
-    await testDbConnection();
+    await testDbConnection();  
 
     app.listen(Number(env.port), () => {  
       console.log(`StockWise backend is running on port ${env.port}`);
