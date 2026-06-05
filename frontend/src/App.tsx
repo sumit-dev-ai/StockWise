@@ -1,13 +1,13 @@
 
 import './App.css'
-import { LoginPage } from './pages/auth/LoginPage'
+import { AppRouter } from './routes/AppRouter'
 
 function App() {
   
 
   return (
     <>
-      <LoginPage />
+      <AppRouter />
     </>
   )
 }
