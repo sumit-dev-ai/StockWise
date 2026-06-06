@@ -1,7 +1,9 @@
-import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
-import type { User, UserAuthContextType } from "../types/auth.types";
+import { createContext, useCallback, useContext, useEffect, useState, type ReactNode } from "react";
+
 import { api } from "../api/authApi";
 import {useNavigate} from "react-router-dom";
+import type { User, UserAuthContextType } from "../types/auth.types";
+
 const AuthContext = createContext<UserAuthContextType | null>(null);
 
 type AuthProviderProps={
@@ -13,7 +15,8 @@ const [user , setUser] = useState<User | null>(null);
 const [loading , setLoading] = useState(true);
 const navigate = useNavigate();
 
-const checkAuth= async() => {
+const checkAuth= useCallback(async () => {
+
     try {
         setLoading(true);
         const response = await api.get("/auth/me");
@@ -26,7 +29,8 @@ const checkAuth= async() => {
     }finally{
         setLoading(false);
     }
-}
+},[]);
+
   const logout = async () => {
     try {
       await api.post("/auth/logout");
@@ -40,7 +44,7 @@ const checkAuth= async() => {
 
 useEffect(() => {
     checkAuth();
-  }, []);
+  }, [checkAuth]);
 
 const value: UserAuthContextType = {
     user,
