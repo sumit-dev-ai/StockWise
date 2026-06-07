@@ -18,8 +18,8 @@ export const verifyAuth = (
   if (!token) {
     throw new ApiError(401, "Unauthorized request");
   }
-
-  const decoded = jwt.verify(
+  try {
+      const decoded = jwt.verify(
     token,
     env.accessTokenSecret
   ) as AccessTokenPayload;
@@ -27,4 +27,8 @@ export const verifyAuth = (
   req.user = decoded;
 
   next();
+  } catch (error) {
+    throw new ApiError(401, "Unauthorized request");
+  }
+
 };

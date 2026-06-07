@@ -5,6 +5,7 @@ import logo from "../../assets/images/logo.png"
 import { ShieldCheck } from "lucide-react";
 import { useAuth } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { storeApi } from "../../api/storeApi";
 
 
 export const LoginPage = () => {
@@ -24,7 +25,20 @@ export const LoginPage = () => {
           console.log("Backend response:", response.data);
           await checkAuth();
 
-          navigate("/dashboard");
+          //directing to signUp Page if not logged in 
+          //
+          navigate("/store-setup");
+          const storeRes = await storeApi.getMyStore();
+          const store = storeRes.data.data.store;
+          
+          if (store) {
+            navigate("/dashboard");
+          }
+          else {
+            navigate("/store-setup");
+          }
+
+
           
 
           }  catch (error) {

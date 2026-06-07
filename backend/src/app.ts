@@ -4,6 +4,7 @@ import cookieParser from "cookie-parser";
 import {db} from "./config/db";
 import errorMiddleware from "./middlewares/error.middleware";
 import  authRoutes  from "./modules/auth/auth.routes";
+import storeRoutes from "./modules/store/store.routes";
 
 const app = express();
 
@@ -28,8 +29,9 @@ app.get("/api/v1/health/db-check", async(req, res) => {
 });
 
 
-
+//routes
 app.use("/api/v1/auth", authRoutes)
+app.use("/api/v1/store", storeRoutes);
 
 app.use(errorMiddleware);
 export default app;
