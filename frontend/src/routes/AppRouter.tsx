@@ -5,6 +5,7 @@ import {AppLayout} from "../components/layout/AppLayout"
 import { DashboardPage } from "../pages/dashboard/DashboardPage";
 import { AuthProvider } from "../context/AuthContext";
 import { StoreSetupPage } from "../pages/store/StoreSetupPage";
+import { CategoriesSetupPage } from "../pages/categories/CategoriesSetupPage";
 
 const AuthWrapper = () => {
   return (
@@ -26,26 +27,28 @@ const router = createBrowserRouter([
         path: "/login",
         element: <LoginPage />,
       },
-      {
-        path: "/store-setup",
-        element: <StoreSetupPage />,
-      },
-      {
-        path: "/store-setup",
-        element: <StoreSetupPage />,
-      },
+
+
       {
         element: <ProtectedRoute />,
         children: [
-          {
-            element: <AppLayout />,
-            children: [
-              {
-                path: "/dashboard",
-                element: <DashboardPage />,
-              },
-            ],
-          },
+                {
+                  path: "/store-setup",
+                  element: <StoreSetupPage />,
+                },
+                {
+                path: "/category-setup",
+                element: <CategoriesSetupPage />,
+                },
+                {
+                  element: <AppLayout />,
+                  children: [
+                    {
+                      path: "/dashboard",
+                      element: <DashboardPage />,
+                    },
+                  ],
+                },
         ],
       },
     ],

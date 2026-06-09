@@ -27,12 +27,13 @@ export const LoginPage = () => {
 
           //directing to signUp Page if not logged in 
           //
-          navigate("/store-setup");
+          
           const storeRes = await storeApi.getMyStore();
           const store = storeRes.data.data.store;
+          console.log(store);
           
           if (store) {
-            navigate("/dashboard");
+            navigate("/category-setup");
           }
           else {
             navigate("/store-setup");

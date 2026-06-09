@@ -5,9 +5,12 @@ import {db} from "./config/db";
 import errorMiddleware from "./middlewares/error.middleware";
 import  authRoutes  from "./modules/auth/auth.routes";
 import storeRoutes from "./modules/store/store.routes";
+import mascatRoutes from "./modules/masterCategory/masterCategory.routes"
+import storeCategoryRoutes from "./modules/category/category.routes"
 
 const app = express();
 
+//middlewares
 app.use(
   cors({
     origin: "http://localhost:5173",
@@ -19,19 +22,17 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-app.get("/api/v1/health", (req, res) => {
-  res.status(200).json({success: true, message: "StockWise backend is healthy!" });
-});
 
-app.get("/api/v1/health/db-check", async(req, res) => {
-  const [rows] = await db.query("SELECT 1+1 AS result")
-  res.status(200).json({success: true, message: "StockWise backend is healthy!" , data:rows });
-});
+
 
 
 //routes
 app.use("/api/v1/auth", authRoutes)
 app.use("/api/v1/store", storeRoutes);
+app.use("/api/v1/master-categories", mascatRoutes)
+app.use("/api/v1/store-categories", storeCategoryRoutes);
+
+
 
 app.use(errorMiddleware);
 export default app;
