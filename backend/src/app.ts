@@ -7,6 +7,7 @@ import  authRoutes  from "./modules/auth/auth.routes";
 import storeRoutes from "./modules/store/store.routes";
 import mascatRoutes from "./modules/masterCategory/masterCategory.routes"
 import storeCategoryRoutes from "./modules/category/category.routes"
+import supplierRoutes from "./modules/supplier/supplier.routes"
 
 const app = express();
 
@@ -27,10 +28,11 @@ app.use(cookieParser());
 
 
 //routes
-app.use("/api/v1/auth", authRoutes)
+app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/store", storeRoutes);
-app.use("/api/v1/master-categories", mascatRoutes)
+app.use("/api/v1/master-categories", mascatRoutes);
 app.use("/api/v1/store-categories", storeCategoryRoutes);
+app.use("/api/v1/suppliers", supplierRoutes);
 
 
 

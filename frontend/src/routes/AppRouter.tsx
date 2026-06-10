@@ -6,6 +6,7 @@ import { DashboardPage } from "../pages/dashboard/DashboardPage";
 import { AuthProvider } from "../context/AuthContext";
 import { StoreSetupPage } from "../pages/store/StoreSetupPage";
 import { CategoriesSetupPage } from "../pages/categories/CategoriesSetupPage";
+import { SuppliersPage } from "../pages/suppliers/SuppliersPage";
 
 const AuthWrapper = () => {
   return (
@@ -38,7 +39,7 @@ const router = createBrowserRouter([
                 },
                 {
                 path: "/category-setup",
-                element: <CategoriesSetupPage />,
+                element: <SuppliersPage />,
                 },
                 {
                   element: <AppLayout />,
