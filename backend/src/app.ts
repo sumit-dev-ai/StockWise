@@ -8,6 +8,7 @@ import storeRoutes from "./modules/store/store.routes";
 import mascatRoutes from "./modules/masterCategory/masterCategory.routes"
 import storeCategoryRoutes from "./modules/category/category.routes"
 import supplierRoutes from "./modules/supplier/supplier.routes"
+import productRoutes from "./modules/product/product.routes";
 
 const app = express();
 
@@ -33,7 +34,7 @@ app.use("/api/v1/store", storeRoutes);
 app.use("/api/v1/master-categories", mascatRoutes);
 app.use("/api/v1/store-categories", storeCategoryRoutes);
 app.use("/api/v1/suppliers", supplierRoutes);
-
+app.use("/api/v1/products", productRoutes);
 
 
 app.use(errorMiddleware);

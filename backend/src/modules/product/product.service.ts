@@ -58,7 +58,7 @@ type CountRow = {
         AND store_id = ?
         AND is_active = ? 
         `,
-        [supplier_id , store_id]
+        [supplier_id , store_id,true]
     )
       if (rows.length === 0) {
     throw new ApiError(400, "Invalid supplier for this store.");

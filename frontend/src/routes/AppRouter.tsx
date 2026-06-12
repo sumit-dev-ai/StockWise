@@ -7,6 +7,7 @@ import { AuthProvider } from "../context/AuthContext";
 import { StoreSetupPage } from "../pages/store/StoreSetupPage";
 import { CategoriesSetupPage } from "../pages/categories/CategoriesSetupPage";
 import { SuppliersPage } from "../pages/suppliers/SuppliersPage";
+import { ProductsPage } from "../pages/products/ProductsPage";
 
 const AuthWrapper = () => {
   return (
@@ -39,7 +40,7 @@ const router = createBrowserRouter([
                 },
                 {
                 path: "/category-setup",
-                element: <SuppliersPage />,
+                element: <ProductsPage />,
                 },
                 {
                   element: <AppLayout />,
