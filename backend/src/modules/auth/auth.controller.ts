@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import asyncHandler from "../../utils/asyncHandler";
 import ApiError from "../../utils/ApiError";
 import ApiResponse from "../../utils/ApiResponse";
-import { verifyGoogleToken } from "./auth.service";
+import { getOnboardingStatus, verifyGoogleToken } from "./auth.service";
 import {
   createGoogleUser,
   findUserByGoogleId,
@@ -42,7 +42,7 @@ export const googleLogin = asyncHandler(async (req: Request, res: Response) => {
   const cookieOptions = {
     httpOnly: true,
     secure: env.nodeEnv === "production",
-    sameSite: env.nodeEnv === "production",
+    sameSite: "lax" as const,
   };
 
   return res
@@ -76,7 +76,7 @@ export const getCurrentUser = asyncHandler(
     if (!user) {
       throw new ApiError(404, "User not found");
     }
-
+    const { store, onBoarding } = await getOnboardingStatus(userId);
     return res.status(200).json(
       new ApiResponse(200, {
         user: {
@@ -85,6 +85,9 @@ export const getCurrentUser = asyncHandler(
           email: user.email,
           profilePicture: user.avatar_url,
         },
+        store,
+        onBoarding
+        
       }),
     );
   },
